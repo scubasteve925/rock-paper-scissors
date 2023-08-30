@@ -3,9 +3,9 @@
 //Create a comparisson that determines who wins and displays 
 
 let computerChoice = pickComputerChoice();
-let playerChoice = 'rock'
-
-playGame();
+let result = '';
+playGame('rock', computerChoice);
+console.log(result);
 
 function pickComputerChoice() {
   const randomNum = Math.random()
@@ -23,12 +23,14 @@ function pickComputerChoice() {
   return(computerChoice);
 }
 
-function playGame() {
-  if(computerChoice === 'rock') {
-    console.log('Tie')
+function playGame(playerChoice, computerChoice) {
+  if(computerChoice === playerChoice || computerChoice === playerChoice.toUpperCase() || computerChoice === playerChoice.toLowerCase()) {
+    result = 'Tie'
   } else if(computerChoice === 'scissors') {
-    console.log('You Win!')
+    result = 'You Win. Rock beats Scissors.'
   } else if(computerChoice === 'paper') {
-    console.log('You Lose!')
+    result = 'You Lose! Paper beats Rock.'
   }
+
+  return(result);
 }
