@@ -1,15 +1,18 @@
 function getComputerChoice() {
-  const randomNum = Math.random();
-  let result = ''
-  if(randomNum < 1/3) {
-  result = 'rock'
-  } else if(randomNum > 2/3) {
-  result = 'paper'
-  } else {
+let randomNum = Math.random()
+let result = ''
+if(randomNum > 2/3) {
+ result = 'rock'
+} else if (randomNum < 1/3) {
   result = 'scissors'
-  }
+} else {
+  result = 'paper'
+}
+
 return result
 }
+
+let computuerChoice = getComputerChoice();
 
 let score = {
   wins: 0,
@@ -17,74 +20,66 @@ let score = {
   ties: 0,
 }
 
-function playRound(playerSelection, computerSelection) {
 
-let result = ''
-computerSelection = getComputerChoice();
-if(playerSelection === 'rock') {
-  if(playerSelection === computerSelection) {
-  result = 'Tie'
-  } else if (computerSelection === 'paper') {
-  result = 'You Lose'
-  } else if(computerSelection === 'scissors') {
-  result = 'You Win'  
+function playGame(playerChoice) {
+
+computuerChoice = getComputerChoice();
+
+if(playerChoice === 'rock') {
+  if(playerChoice === computuerChoice) {
+    result = 'Tie.'
+  } else if (computuerChoice === 'paper') {
+    result = 'You Lose.'
+  } else if (computuerChoice === 'scissors') {
+    result = 'You Win!'
+  }
+}
+if(playerChoice === 'paper') {
+  if(playerChoice === computuerChoice) {
+    result = 'Tie.'
+  } else if (computuerChoice === 'scissors') {
+    result = 'You Lose.'
+  } else if (computuerChoice === 'rock') {
+    result = 'You Win!'
+  }
+}
+if(playerChoice === 'scissors') {
+  if(playerChoice === computuerChoice) {
+    result = 'Tie.'
+  } else if (computuerChoice === 'rock') {
+    result = 'You Lose.'
+  } else if (computuerChoice === 'paper') {
+    result = 'You Win!'
   }
 }
 
-if(playerSelection === 'paper') {
-  if(playerSelection === computerSelection) {
-  result = 'Tie'
-  } else if (computerSelection === 'scissors') {
-  result = 'You Lose'
-  } else if(computerSelection === 'rock') {
-  result = 'You Win'  
-  }
-}
-
-if(playerSelection === 'scissors') {
-  if(playerSelection === computerSelection) {
-  result = 'Tie'
-  } else if (computerSelection === 'rock') {
-  result = 'You Lose'
-  } else if(computerSelection === 'paper') {
-  result = 'You Win'  
-  }
-}
-
-let message = ''
-
-if(result === 'You Win') {
+if(result === 'You Win!') {
   score.wins += 1
-  message = `${result}. ${playerSelection} beats ${computerSelection}.
-  Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
-} else if (result === 'You Lose') {
+} else if(result === 'You Lose.') {
   score.losses += 1
-  message = `${result}. ${computerSelection} beats ${playerSelection}.
-  Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
-} else {
+} else if(result === 'Tie.') {
   score.ties += 1
-  message = `${result}
-  Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
 }
 
-return message
+let final = `${result}`
+let message = `You ${playerChoice}
+ ${computuerChoice} Computer`
+
+document.querySelector('.js-result').innerHTML = result
+
+document.querySelector('.js-message').innerHTML = `You <img src="imgs/${playerChoice}-emoji.png" alt="" class="icons"> <img src="imgs/${computuerChoice}-emoji.png" alt="" class="icons"> Computer`
+
+document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
 }
 
-let computerSelection = getComputerChoice();
-let playerSelection = prompt("Chose rock, paper, or scissors", undefined).toUpperCase().toLowerCase();
+function updateScore() {
+  score.wins = 0
+  score.losses = 0
+  score.ties = 0
 
-game();
+  document.querySelector('.js-score').innerHTML = `Wins: ${score.wins} Losses: ${score.losses} Ties: ${score.ties}`
 
-function game() {
+  document.querySelector('.js-result').innerHTML = ''
 
-console.log(playRound(playerSelection, computerSelection));
-playerSelection = prompt("Chose rock, paper, or scissors", undefined).toUpperCase().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
-playerSelection = prompt("Chose rock, paper, or scissors", undefined).toUpperCase().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
-playerSelection = prompt("Chose rock, paper, or scissors", undefined).toUpperCase().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
-playerSelection = prompt("Chose rock, paper, or scissors", undefined).toUpperCase().toLowerCase();
-console.log(playRound(playerSelection, computerSelection));
-
+  document.querySelector('.js-message').innerHTML = ''
 }

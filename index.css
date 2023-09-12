@@ -1,0 +1,42 @@
+body {
+background-color: rgba(0, 0, 0, 0.83);
+color: white;
+}
+
+.title {
+font-size: 50px;
+margin-left: 70px;
+}
+
+.icons {
+  height: 75px;
+}
+
+.margin-left {
+  margin-left: 50px;
+}
+
+.button {
+ background-color: transparent;
+ border: 2px solid white;
+ border-radius: 150px;
+ padding: 50px;
+ margin-right: 10px;
+ cursor: pointer;
+}
+
+.reset-score {
+  margin-top: 40px;
+  margin-left: 70px;
+  font-size: 18px;
+}
+
+.bottom-message {
+  margin-top: 40px;
+  margin-left: 70px;
+  font-size: 25px;
+}
+
+.js-score {
+  margin-top: 50px;
+}
